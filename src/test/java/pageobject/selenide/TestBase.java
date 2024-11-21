@@ -4,9 +4,11 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import io.qameta.allure.Allure;
-import io.qameta.allure.testng.AllureTestNg;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +17,9 @@ import org.testng.annotations.Listeners;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.URL;
 
+import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -27,7 +31,20 @@ public class TestBase {
     @BeforeMethod
     public void methodSetup() {
         String browser = System.getProperty("browser", "chrome");
+        String platform = System.getProperty("os", "linux");
 
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setBrowserName(browser);
+//        caps.setVersion("120");
+
+        switch(platform) {
+            case "win" -> caps.setPlatform(Platform.WINDOWS);
+            case "linux" -> caps.setPlatform(Platform.LINUX);
+            case "mac" -> caps.setPlatform(Platform.MAC);
+        }
+
+        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.browserCapabilities = caps;
         Configuration.browser = browser;
         Configuration.pageLoadTimeout = 5000;
 //        Configuration.browserSize = "1920x1080";

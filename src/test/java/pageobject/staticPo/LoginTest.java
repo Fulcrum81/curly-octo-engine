@@ -12,8 +12,10 @@ import java.time.Duration;
 public class LoginTest extends TestBase {
 
     @Test
-    public void loginWithCorrectEmailAndWrongPassword() {
+    public void loginWithCorrectEmailAndWrongPassword() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
+
+        Thread.sleep(10000);
 
         LoginPage.loginWithCredentials(driver, "vadim.zubovich@gmail.com", "kjszhvbsakjhvb");
         softAssert.assertTrue(LoginPage.errorMessageIsDisplayed(driver), "Error message is not displayed");

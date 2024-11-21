@@ -27,20 +27,20 @@ public class LoginPage {
         $(loginButton).click();
     }
 
-    @Step("Login with defined credentials")
+//    @Step("Login with defined credentials")
     public static void loginWithCredentials(String email, String password) {
         typeEmail(email);
         typePassword(password);
         clickLoginButton();
     }
 
-    @Step("Validate that the error message is displayed")
+//    @Step("Validate that the error message is displayed")
     public static void validateErrorMessageIsDisplayed() {
         $(errorMessageLabel).shouldBe(visible);
         $(errorMessageLabel).should(disappear);
     }
 
-    @Step("Validate that the error message text matches expectation")
+//    @Step("Validate that the error message text matches expectation")
     public static void validateErrorMessageText(String expectedText) {
         $(errorMessageLabel).shouldHave(text(expectedText));
     }
