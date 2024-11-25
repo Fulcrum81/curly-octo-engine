@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends TestBase {
 
     @Description("This test attempts to login with correct email and incorrect password and verifies error message")
-    @Test(testName = "Login with correct email and incorrect password")
+    @Test(description = "Login with correct email and incorrect password")
     public void loginWithCorrectEmailAndWrongPassword() {
         LoginPage.loginWithCredentials("vadim.zubovich@gmail.com", "kjszhvbsakjhvb");
         LoginPage.validateErrorMessageIsDisplayed();
@@ -18,7 +18,7 @@ public class LoginTest extends TestBase {
     }
 
     @Description("This test attempts to login with correct email and password and verifies success message")
-    @Test(testName = "Login with correct credentials")
+    @Test(description = "Login with correct credentials")
     public void loginWithCorrectCredentials() {
         LoginPage.loginWithCredentials("vadim.zubovich@gmail.com", "Test1234!");
     }

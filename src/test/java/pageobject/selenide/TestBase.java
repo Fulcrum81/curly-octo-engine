@@ -43,7 +43,7 @@ public class TestBase {
             case "mac" -> caps.setPlatform(Platform.MAC);
         }
 
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = "http://192.168.249.1:4444/wd/hub";
         Configuration.browserCapabilities = caps;
         Configuration.browser = browser;
         Configuration.pageLoadTimeout = 5000;
