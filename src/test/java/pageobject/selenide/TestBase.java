@@ -44,12 +44,13 @@ public class TestBase {
         }
 
         Configuration.remote = "http://192.168.249.1:4444/wd/hub";
+        open("http://litecart.stqa.ru/en/");
         Configuration.browserCapabilities = caps;
         Configuration.browser = browser;
         Configuration.pageLoadTimeout = 5000;
 //        Configuration.browserSize = "1920x1080";
 
-        open("http://litecart.stqa.ru/en/");
+//        open("http://litecart.stqa.ru/en/");
     }
 
     @AfterMethod
