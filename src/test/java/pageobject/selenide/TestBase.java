@@ -64,6 +64,6 @@ public class TestBase {
             }
         }
 
-        closeWindow();
+//        closeWindow();
     }
 }
