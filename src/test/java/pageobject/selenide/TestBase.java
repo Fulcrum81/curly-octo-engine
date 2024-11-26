@@ -8,7 +8,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,10 +16,7 @@ import org.testng.annotations.Listeners;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URL;
 
-import static com.codeborne.selenide.Browsers.CHROME;
-import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.open;
 
 @Listeners({ReportPortalTestNGListener.class, ScreenshotListener.class})
@@ -44,13 +40,12 @@ public class TestBase {
         }
 
         Configuration.remote = "http://192.168.249.1:4444/wd/hub";
-        open("http://litecart.stqa.ru/en/");
         Configuration.browserCapabilities = caps;
         Configuration.browser = browser;
         Configuration.pageLoadTimeout = 5000;
 //        Configuration.browserSize = "1920x1080";
 
-//        open("http://litecart.stqa.ru/en/");
+        open("http://litecart.stqa.ru/en/");
     }
 
     @AfterMethod
@@ -64,6 +59,5 @@ public class TestBase {
             }
         }
 
-//        closeWindow();
     }
 }
